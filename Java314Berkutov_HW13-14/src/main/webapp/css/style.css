@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.items>div{
+    padding: 10px;
+    margin: 10px;
+    width: 400px;
+    background-color: cadetblue;
+    display: flex;
+    flex-basis: 20%;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+inpuit{
+
+}
+button{
+    padding: 10px 20px;
+    background-color: cadetblue;
+    color: white;
+    border: 0;
+    border-radius: 4px;
+}
+
+.items>div:hover{
+    background-color: olivedrab;
+}
+
+.items a {
+    color: white;
+    text-decoration: none;
+}
+
+.form{
+    width: 500px;
+    margin: 100px auto;
+}
+
+.reg_user{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.text-error{
+    color: red;
+}
+
+.text-success{
+    color: darkgreen;
+}
+
+.user_list{
+    border-collapse: collapse;
+}
+
+.user_list td{
+    vertical-align: center;
+    width: 200px;
+    border: 1px solid gray;
+}
