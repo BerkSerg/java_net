@@ -1,0 +1,152 @@
+.main{
+    background: #005577;
+}
+
+.wrap{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 20px;
+    text-transform: uppercase;
+}
+
+.menu a{
+    text-decoration: none;
+    color: white;
+}
+
+.logo{
+    margin-right: 50%;
+}
+
+.carousel-item{
+    height: 500px;
+}
+
+
+
+
+.adv{
+    margin: 60px 0;
+}
+
+.adv__block{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.adv__left{
+    flex-basis: 60%;
+}
+
+.adv__right{
+    flex-basis: 30%;
+}
+
+.adv__right img{
+    width: 100%;
+    box-shadow: 0 0 6px 2px #005577;
+}
+
+h2{
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.adv__left{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.adv__left>div{
+    width: 40%;
+    box-shadow: 0 0 6px 2px #005577;
+    padding: 30px 20px 20px;
+    margin: 20px 0;
+}
+
+/* team block*/
+.team{
+    margin: 60px 0;
+    border-top: 1px solid #999;
+}
+
+.team h2{
+    padding-top: 60px;
+}
+
+.team__block{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.team__element{
+    flex-basis: 24%;
+    box-shadow: 0 0 6px 2px #005577;
+}
+
+.team__element img{
+    width: 100%;
+}
+
+.team__element h3, .team__element p{
+    text-align: center;
+    text-transform: uppercase;
+    padding: 20px;
+}
+
+footer{
+    background: #005577;
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 30px 0 10px;
+}
+
+.height{
+    min-height: calc(100% - 64px - 80px - 100px);
+}
+
+.form{
+    width: 600px;
+    margin: 100px auto;
+}
+
+.button{
+    background: #99ccdd!important;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.center{
+    text-align: center;
+}
+
+.menu button{
+    background: #005577;
+    border: 0;
+}
+
+.menu button:hover{
+    color: #00ddff;
+    background: #005577;
+}
+
+.menu .dropdown-menu a{
+    color: black;
+}
+
+.menu .dropdown-menu a:hover{
+    background-color: #0b453d;
+    color: #00ddff;
+}
