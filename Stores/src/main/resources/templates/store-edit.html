@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add store</title>
+</head>
+<body>
+<form action="store-save" method="post">
+    <input type="hidden" name="id" th:value="${store.getId()}">
+    <div>
+        <label for="store_name">Название</label><input type="text" name="store_name" id="store_name" th:value="${store.getStore_name()}">
+    </div>
+    <div>
+        <label for="address">Адрес</label><input type="text" name="address" id="address" th:value="${store.getAddress()}">
+    </div>
+    <div>
+        <label for="phone">Телефон</label><input type="text" name="phone" id="phone" th:value="${store.getPhone()}">
+    </div>
+    <div>
+        <label for="email">Email</label><input type="text" name="email" id="email" th:value="${store.getEmail()}">
+    </div>
+    <div>
+        <label for="link">Ссылка</label><input type="text" name="link" id="link" th:value="${store.getLink()}">
+    </div>
+    <div>
+        <label for="category">Категория</label><input type="text" name="category" id="category" th:value="${store.getCategory()}">
+    </div>
+    <div>
+        <label for="description">Описание</label><textarea th:text="${store.getDescription()}" maxlength="255" name="description"
+                                                           id="description"></textarea>
+    </div>
+    <input type="submit" value="Создать">
+</form>
+
+</body>
+</html>

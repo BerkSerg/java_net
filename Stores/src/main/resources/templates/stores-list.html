@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Stores list</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h2>Список магазинов</h2>
+<table style="border: 1px solid gray; border-collapse: collapse;">
+    <col style="width: 150px;">
+    <col style="width: 250px;">
+    <col style="width: 150px;">
+    <col style="width: 150px;">
+    <col style="width: 350px;">
+    <tr>
+        <th>Название</th>
+        <th>Адрес</th>
+        <th>Категория</th>
+        <th>Телефон</th>
+        <th>Описание</th>
+    </tr>
+
+    <tr th:each="store : ${storesList}" th:onclick="" >
+        <td th:text="${store.store_name}" style="border: 1px solid gray;" th:onclick="'location.href=\/store-edit?id='+${store.id}">name</td>
+        <td th:text="${store.address}" style="border: 1px solid gray;">address</td>
+        <td th:text="${store.category}" style="border: 1px solid gray;">category</td>
+        <td th:text="${store.phone}" style="border: 1px solid gray;">phone</td>
+        <td th:text="${store.description}" style="border: 1px solid gray;">description</td>
+        <td style="border: 1px solid gray;"><a th:href="'store-edit?id='+${store.id}">Редактировать</a></td>
+        <td style="border: 1px solid gray;"><a th:href="'store-del?id='+${store.id}">Удалить</a></td>
+    </tr>
+</table>
+
+</body>
+</html>
