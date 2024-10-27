@@ -1,34 +1,53 @@
 package org.example.demo.feedbackapi.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.demo.feedbackapi.dto.RegisterDto;
+import org.example.demo.feedbackapi.dto.UserDto;
 import org.example.demo.feedbackapi.model.User;
+import org.example.demo.feedbackapi.service.SessionService;
 import org.example.demo.feedbackapi.service.UserService;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/author")
+@RequestMapping("/authors")
 public class AuthorController {
     private final UserService userService;
+    private final SessionService sessionService;
 
-    @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody User user){
-        return ResponseEntity.ok(userService.register(user));
+    @GetMapping
+    public List<UserDto> getAllAuthors(){
+        return userService.getAllUsers();
     }
 
-    // TODO real login
-    @GetMapping("/login")
-    ResponseEntity<String> login(Authentication authentication){
-        authentication.setAuthenticated(true);
-        if(authentication.isAuthenticated()){
-            return ResponseEntity.ok("Success");
+    @PostMapping
+    public UserDto addAuthor(@RequestBody User user){
+        if (sessionService.isAdmin()){
+            RegisterDto registration = new RegisterDto();
+            registration.setUsername(user.getUsername());
+            registration.setPassword(user.getPassword());
+            return userService.register(registration);
+
+        }else{
+            return null;
         }
-        return ResponseEntity.ok("Fail");
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteByName(@PathVariable(name = "id") String userName){
+        userService.deleteUserByUserName(userName);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{id}/block")
+    public ResponseEntity<Void> blockByName(@PathVariable(name = "id") String userName){
+        userService.blockUserByUserName(userName);
+        return ResponseEntity.ok().build();
+    }
+
 }
