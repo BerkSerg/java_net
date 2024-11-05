@@ -39,14 +39,14 @@ public class AuthorController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteByName(@PathVariable(name = "id") String userName){
-        userService.deleteUserByUserName(userName);
+    public ResponseEntity<Void> deleteByName(@PathVariable(name = "id") Long userId){
+        userService.deleteUserById(userId);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/{id}/block")
-    public ResponseEntity<Void> blockByName(@PathVariable(name = "id") String userName){
-        userService.blockUserByUserName(userName);
+    public ResponseEntity<Void> blockByName(@PathVariable(name = "id") Long userId){
+        userService.blockUserById(userId);
         return ResponseEntity.ok().build();
     }
 

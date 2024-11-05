@@ -41,9 +41,21 @@ public class UserService {
         }
     }
 
+    public void deleteUserById(Long userId){
+        if(sessionService.isAdmin()){
+            userRepository.findById(userId).ifPresent(user -> user.setState(EUserState.DELETED));
+        }
+    }
+
     public void blockUserByUserName(String userName){
         if(sessionService.isAdmin()){
             userRepository.findByUsername(userName).ifPresent(user -> user.setState(EUserState.BLOCKED));
+        }
+    }
+
+    public void blockUserById(Long userId){
+        if(sessionService.isAdmin()){
+            userRepository.findById(userId).ifPresent(user -> user.setState(EUserState.BLOCKED));
         }
     }
 

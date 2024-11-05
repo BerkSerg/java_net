@@ -1,6 +1,7 @@
 package org.example.demo.feedbackapi.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.demo.feedbackapi.dto.ReviewDto;
 import org.example.demo.feedbackapi.model.Review;
 import org.example.demo.feedbackapi.service.ReviewService;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,7 @@ public class ReviewController {
     }
 
     @PutMapping("/{id}")
-    public Review updateReviewById(@PathVariable(name = "id") Long reviewId, @RequestBody Review reviewUpdated){
+    public Review updateReviewById(@PathVariable(name = "id") Long reviewId, @RequestBody ReviewDto reviewUpdated){
         Review review = reviewService.findById(reviewId);
         review.setContent(reviewUpdated.getContent());
         return reviewService.save(review);
