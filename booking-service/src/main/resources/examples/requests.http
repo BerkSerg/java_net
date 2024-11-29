@@ -1,0 +1,215 @@
+
+### регистрация пользователя
+POST localhost:8090/api/v1/registration
+Content-Type: application/json
+
+{
+  "email": "ivanov@emm.ru",
+  "password": "ivanov@emm.ru",
+  "firstname": "Ivan",
+  "lastname": "Ivanov",
+  "nickname": "Ivan32",
+  "city": "Moscow",
+  "country": "Russia",
+  "birth_date": "2007-06-01"
+}
+
+### регистрация пользователя 2
+POST localhost:8090/api/v1/registration
+Content-Type: application/json
+
+{
+  "email": "petrov@emm.ru",
+  "password": "petrov@emm.ru",
+  "firstname": "Vasya",
+  "lastname": "Petrov",
+  "nickname": "ptr2020",
+  "city": "Moscow",
+  "country": "Russia",
+  "birth_date": "2007-06-01"
+}
+
+
+### обновление данных пользователя
+PUT localhost:8090/api/v1/users/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "email": "ivanov@emm.ru",
+  "firstname": "Ivan",
+  "lastname": "Petrov",
+  "nick_name": "Ivan2000",
+  "city": "Voronezh",
+  "country": "Russian Federation",
+  "birth_date": "2000-01-01"
+}
+
+
+### авторизация пользователя
+POST localhost:8090/api/v1/login
+Content-Type: application/json
+
+{
+  "email": "ivanov@emm.ru",
+  "password": "ivanov@emm.ru",
+  "newPassword": "",
+  "reNewPassword": ""
+}
+
+### авторизация пользователя ошибочная
+POST localhost:8090/api/v1/login
+Content-Type: application/json
+
+{
+  "email": "ivanov@emm.ru",
+  "password": "ivanov@emm12.ru",
+  "newPassword": "",
+  "reNewPassword": ""
+}
+
+### смена пароля пользователя
+PUT localhost:8090/api/v1/change-pass
+Content-Type: application/json
+
+{
+  "id": 1,
+  "email": "ivanov@em.ru",
+  "password": "ivanov@em.ru",
+  "newPassword": "11223344",
+  "reNewPassword": "11223344"
+}
+
+
+### добавление собственности
+POST localhost:8090/api/v1/properties/add
+Content-Type: application/json
+
+{
+  "property_type": "HOUSE",
+  "owner_id": 1,
+  "title": "Гостевой дом На Добрынинской",
+  "description": "Двухместный номер с 1 кроватью с удобствами 12м2",
+  "city": "Москва",
+  "country": "Россия",
+  "price_per_day": 3990
+}
+
+### добавление собственности 2
+POST localhost:8090/api/v1/properties/add
+Content-Type: application/json
+
+{
+  "property_type": "FLAT",
+  "owner_id": 1,
+  "title": "Отель Arium",
+  "description": "Двухместный номер с 1 кроватью стандарт Дабл 16м2",
+  "city": "Москва",
+  "country": "Россия",
+  "price_per_day": 12000
+}
+
+### добавление собственности 3
+POST localhost:8090/api/v1/properties/add
+Content-Type: application/json
+
+{
+  "property_type": "FLAT",
+  "owner_id": 2,
+  "title": "Гостиница Лофт Отель на Крымской",
+  "description": "Улучшенный Лофт 101 22м2",
+  "city": "Москва",
+  "country": "Россия",
+  "price_per_day": 5000
+}
+
+
+### добавление собственности 4
+POST localhost:8090/api/v1/properties/add
+Content-Type: application/json
+
+{
+  "property_type": "FLAT",
+  "owner_id": 1,
+  "title": "Квартира На Петроградской",
+  "description": "Трехкомнатная квартиры с мебелью и со всеми удобствами  52м2",
+  "city": "Санкт-петербург",
+  "country": "Россия",
+  "price_per_day": 4750
+}
+
+### Получение всех объектов собственности
+GET localhost:8090/api/v1/properties?page=0
+Content-Type: application/json
+
+
+### Получение объектов собственности по фильтру
+GET localhost:8090/api/v1/properties/search?city=Moscow&page=0
+Content-Type: application/json
+
+### Получение объектов собственности по фильтру город
+GET localhost:8090/api/v1/properties/search?city=Москва&page=0
+Content-Type: application/json
+
+### Получение объектов собственности по фильтру цена больше 1000
+GET localhost:8090/api/v1/properties/search?price_from=1000&page=0
+Content-Type: application/json
+
+### Получение объектов собственности по фильтру цена c 4000
+GET localhost:8090/api/v1/properties/search?price_from=4000&page=0
+Content-Type: application/json
+
+### Получение объектов собственности по фильтру цена до 4000
+GET localhost:8090/api/v1/properties/search?price_to=4000&page=0
+Content-Type: application/json
+
+### Получение объектов собственности по дням
+GET localhost:8090/api/v1/properties/search?start_date=2024-11-30&end_date=2024-12-05&page=0
+Content-Type: application/json
+
+### Бронирование объекта
+POST localhost:8090/api/v1/booking/add
+Content-Type: application/json
+
+{
+  "property_id": 2,
+  "renter_id": 2,
+  "start_date": "2024-12-01",
+  "end_date": "2024-12-03"
+}
+
+### Подтверждение Бронирования объекта
+PUT localhost:8090/api/v1/booking/1/confirm
+Content-Type: application/json
+
+### Бронирование объекта
+POST localhost:8090/api/v1/booking/add
+Content-Type: application/json
+
+{
+  "property_id": 2,
+  "renter_id": 2,
+  "start_date": "2024-12-10",
+  "end_date": "2024-12-15"
+}
+
+### Подтверждение Бронирования объекта 2
+PUT localhost:8090/api/v1/booking/2/confirm
+Content-Type: application/json
+
+### Получение объектов собственности по дням 2
+GET localhost:8090/api/v1/properties/search?start_date=2024-11-05&end_date=2024-11-15&page=0
+Content-Type: application/json
+
+
+### Рейтинг бронирования и вледлальца недвижимости
+PUT localhost:8090/api/v1/booking/1/owner/4
+Content-Type: application/json
+
+### Рейтинг арендатора
+PUT localhost:8090/api/v1/booking/1/renter/3
+Content-Type: application/json
+
+### Рейтинг арендатора
+PUT localhost:8090/api/v1/booking/1/renter/1
+Content-Type: application/json
