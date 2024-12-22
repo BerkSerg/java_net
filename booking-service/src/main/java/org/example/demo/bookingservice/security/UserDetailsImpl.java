@@ -2,12 +2,14 @@ package org.example.demo.bookingservice.security;
 
 import lombok.RequiredArgsConstructor;
 import org.example.demo.bookingservice.model.User;
+import org.example.demo.bookingservice.model.enums.UserStatus;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 public class UserDetailsImpl implements UserDetails {
@@ -36,7 +38,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return Objects.equals(user.getUserStatus(), UserStatus.NEW) || Objects.equals(user.getUserStatus(), UserStatus.ACTIVE);
     }
 
     @Override
@@ -46,6 +48,6 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return Objects.equals(user.getUserStatus(), UserStatus.NEW) || Objects.equals(user.getUserStatus(), UserStatus.ACTIVE);
     }
 }

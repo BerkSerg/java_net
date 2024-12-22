@@ -8,13 +8,13 @@ import java.util.List;
 @Value
 public class PropertyDto {
     Long id;
-    String property_type;
-    Long owner_id;
+    String propertyType;
+    Long ownerId;
     String title;
     String description;
     String city;
     double rating;
-    double price_per_day;
+    double pricePerDay;
 
     public static PropertyDto from(Property property){
         return new PropertyDto(property.getId(), property.getPropertyType().name(), property.getOwner().getId(),

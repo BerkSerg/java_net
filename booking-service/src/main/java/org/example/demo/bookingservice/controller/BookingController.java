@@ -3,6 +3,7 @@ package org.example.demo.bookingservice.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.demo.bookingservice.dto.BookingDto;
 import org.example.demo.bookingservice.dto.UserDto;
+import org.example.demo.bookingservice.model.responses.BookingResponse;
 import org.example.demo.bookingservice.service.BookingService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +17,23 @@ import static org.example.demo.bookingservice.BookingServiceApplication.API_VER;
 public class BookingController {
     private final BookingService bookingService;
 
-    @PostMapping("/add")
-    public ResponseEntity<BookingDto> addBooking(@RequestBody BookingDto bookingDto){
-        try{
-            BookingDto newBooking = bookingService.addBooking(bookingDto);
-            return ResponseEntity.status(HttpStatus.CREATED).body(newBooking);
+    @GetMapping("/my")
+    public ResponseEntity<BookingResponse> getUserBooking(@RequestHeader (name="Authorization") String tokenHeader) {
+        try {
+            String jwtToken = tokenHeader.substring(7);
+            BookingResponse userBooking = bookingService.getBookingsByUser(jwtToken);
+            return ResponseEntity.status(HttpStatus.OK).body(userBooking);
+        }catch (RuntimeException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+    }
 
+    @PostMapping("/add")
+    public ResponseEntity<BookingDto> addBooking(@RequestHeader (name="Authorization") String tokenHeader, @RequestBody BookingDto bookingDto){
+        try{
+            String jwtToken = tokenHeader.substring(7);
+            BookingDto newBooking = bookingService.addBooking(jwtToken, bookingDto);
+            return ResponseEntity.status(HttpStatus.CREATED).body(newBooking);
         }catch (RuntimeException e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
@@ -32,7 +44,16 @@ public class BookingController {
         try{
             BookingDto booking = bookingService.bookingSetConfirm(booking_id);
             return ResponseEntity.status(HttpStatus.ACCEPTED).body(booking);
+        }catch (RuntimeException e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
+    }
 
+    @PutMapping("/{booking_id}/cancel")
+    public ResponseEntity<BookingDto> cancelBooking(@PathVariable Long booking_id){
+        try{
+            BookingDto booking = bookingService.bookingSetCancel(booking_id);
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(booking);
         }catch (RuntimeException e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }

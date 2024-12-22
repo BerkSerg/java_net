@@ -10,11 +10,11 @@ import java.util.List;
 @Value
 public class BookingDto {
     Long id;
-    Long property_id;
-    Long renter_id;
-    LocalDate start_date;
-    LocalDate end_date;
-    Double total_amount;
+    Long propertyId;
+    Long renterId;
+    LocalDate startDate;
+    LocalDate endDate;
+    Double totalAmount;
     int rating;
     BookingStatus status;
 

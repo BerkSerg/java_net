@@ -1,7 +1,9 @@
 package org.example.demo.bookingservice.repository;
 
 import org.example.demo.bookingservice.model.Property;
+import org.example.demo.bookingservice.model.enums.BookingStatus;
 import org.example.demo.bookingservice.model.enums.PropertyStatus;
+import org.example.demo.bookingservice.model.enums.PropertyType;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,7 +13,7 @@ import org.springframework.data.repository.query.Param;
 import java.time.LocalDate;
 
 public interface PropertyRepository extends JpaRepository<Property, Long> {
-    Page<Property> findAllByPropertyStatus(PropertyStatus propertyStatus, Pageable pageable);
+    Page<Property> findAllByPropertyStatusOrderByIdDesc(PropertyStatus propertyStatus, Pageable pageable);
 
     @Query("SELECT p FROM Property p WHERE "+
             "(:propertyType IS NULL OR p.propertyType=:propertyType) AND " +
@@ -46,12 +48,12 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
             "(:propertyStatus IS NULL OR p.propertyStatus=:propertyStatus) " +
             "AND (CAST(:startDate AS date) IS NULL OR CAST(:endDate AS date) IS NULL OR " +
             " NOT EXISTS (SELECT b FROM Booking b WHERE b.property=p AND " +
-            " b.startDate <= :endDate AND b.endDate >= :startDate)) "
+            " b.startDate <= :endDate AND b.endDate >= :startDate AND b.status IN (:st1, :st2))) ORDER BY p.id DESC"
     )
-    Page<Property> searchByParametersAndDates(
+    Page<Property> findAllByParametersAndDates(
         @Param("startDate") LocalDate startDate,
         @Param("endDate") LocalDate endDate,
-        @Param("propertyType") String propertyType,
+        @Param("propertyType") PropertyType propertyType,
         @Param("title") String title,
         @Param("description") String description,
         @Param("city") String city,
@@ -59,7 +61,10 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
         @Param("propertyStatus") PropertyStatus propertyStatus,
         @Param("priceFrom") Double priceFrom,
         @Param("priceTo") Double priceTo,
+        @Param("st1") BookingStatus status1,
+        @Param("st2") BookingStatus status2,
         Pageable pageable
     );
+
 }
 

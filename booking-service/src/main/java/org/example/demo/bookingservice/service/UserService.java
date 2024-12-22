@@ -5,6 +5,8 @@ import org.example.demo.bookingservice.dto.UserDto;
 import org.example.demo.bookingservice.model.User;
 import org.example.demo.bookingservice.model.enums.UserStatus;
 import org.example.demo.bookingservice.repository.UserRepository;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -12,19 +14,15 @@ import java.time.LocalDate;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-
     private final UserRepository userRepository;
 
-    public void updateUser(UserDto userNewData) {
-        User user = getUserById(userNewData.getId());
-
+    public void updateUser(String email, UserDto userNewData) {
+        User user = getByEmail(email);
         user.setFirstName(userNewData.getFirstname());
-        user.setFirstName(userNewData.getLastname());
-        user.setNickName(userNewData.getNick_name());
+        user.setLastName(userNewData.getLastname());
+        user.setNickName(userNewData.getNickName());
         user.setCity(userNewData.getCity());
-        user.setCounty(userNewData.getCountry());
-        user.setBirthDate(LocalDate.parse(userNewData.getBirth_date()));
-        user.setUserStatus(UserStatus.NEW);
+        user.setBirthDate(LocalDate.parse(userNewData.getBirthDate()));
         userRepository.save(user);
     }
 
@@ -42,4 +40,14 @@ public class UserService {
         }
         userRepository.save(owner);
     }
+
+    public User getByEmail(String username) {
+        return userRepository.findByEmail(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
+    }
+
+    public UserDetailsService userDetailedService() {
+        return this::getByEmail;
+    }
+
 }

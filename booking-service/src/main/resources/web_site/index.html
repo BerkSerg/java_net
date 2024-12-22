@@ -1,50 +1,61 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Аренда жилья</title>
+    <title>Booking service</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<header>
+    <h1 id="title">Booking service</h1>
+    <nav id="nav-panel">
+        <button id="btn-login">Войти</button>
+        <button id="btn-register">Регистрация</button>
+    </nav>
+</header>
 
-<h1>Онлайн аренда жилья</h1>
 
-<!-- Форма регистрации -->
-<h2>Регистрация</h2>
-<form id="registerForm">
-    <input type="text" id="firstname" placeholder="Имя" required>
-    <input type="text" id="lastname" placeholder="Фамилия" required>
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="password" id="password" placeholder="Пароль" required>
-    <input type="text" id="city" placeholder="Город" required>
-    <input type="date" id="birth_date" placeholder="Дата рождения" required>
-    <button type="submit">Зарегистрироваться</button>
-</form>
-<p id="registerMessage"></p>
+<main id="content">
+	<div id="modal-panel" class="modal">
+        <div class="modal-content">
+            <span id="modal-close" class="close">&times;</span>
+			<div id="modal-body">
+				<h2>Привет!</h2>
+				<p>Это полупрозрачное модальное окно.</p>
+			</div>
+        </div>
+    </div>
+    <div id="filter-content">
+        <!-- Dynamic content will be inserted here -->
+    </div>
 
-<!-- Форма входа -->
-<h2>Вход</h2>
-<form id="loginForm">
-    <input type="text" id="loginEmail" placeholder="Ник" required>
-    <input type="password" id="loginPassword" placeholder="Пароль" required>
-    <button type="submit">Войти</button>
-</form>
-<p id="loginMessage"></p>
+    <div id="main-content">
+        <div class="_e296pg">
+            <div class="_ds7650">
+                <div class="_vm0m18z" data-ev-n="dashboard_media" data-ev-t="video" data-n="wat-dashboard-media"
+                     data-gtm-vis-recent-on-screen71109250_45="4713379"
+                     data-gtm-vis-first-on-screen71109250_45="4713379" data-gtm-vis-total-visible-time71109250_45="100"
+                     data-gtm-vis-has-fired71109250_45="1" data-gtm-vis-recent-on-screen71109250_81="4713391"
+                     data-gtm-vis-first-on-screen71109250_81="4713391" data-gtm-vis-total-visible-time71109250_81="100"
+                     data-gtm-vis-has-fired71109250_81="1">
+                    <video src="https://disk.2gis.com/otello/features/dashboard/videos/720/winter-town.v1.mp4" loop=""
+                           playsinline="" class="videoframe"
+                           poster="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAoAQMAAACyxfoTAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAAxJREFUGNNjGAVYAQABGAABtdVzhwAAAABJRU5ErkJggg=="
+                           data-n="wat-media-video" style="object-fit: cover; border-radius: 24px;" autoplay muted></video>
+                    <div class="_10w21br"></div>
+                </div>
+            </div>
+            <div class="_adqssrp"><h1 class="_1y6saaeo" data-n="wat-main-page-text">Дома и апартаменты для путешествий
+                по&nbsp;России</h1></div>
+        </div>
+    </div>
+</main>
 
-<!-- Форма поиска жилья -->
-<h2>Поиск жилья</h2>
-<form id="searchForm">
-    <input type="text" id="searchCity" placeholder="Город">
-    <input type="text" id="searchCountry" placeholder="Страна">
-    <input type="number" id="minPrice" placeholder="Минимальная цена">
-    <input type="number" id="maxPrice" placeholder="Максимальная цена">
-    <input type="date" id="availableFrom" placeholder="Доступно с">
-    <input type="date" id="availableTo" placeholder="Доступно до">
-    <button type="submit">Поиск</button>
-</form>
-<div id="propertiesList"></div>
+<footer>
+    <p>&copy; 2024 Booking service</p>
+</footer>
 
 <script src="script.js"></script>
-
 </body>
 </html>

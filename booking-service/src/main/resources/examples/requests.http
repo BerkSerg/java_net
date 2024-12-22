@@ -198,7 +198,7 @@ PUT localhost:8090/api/v1/booking/2/confirm
 Content-Type: application/json
 
 ### Получение объектов собственности по дням 2
-GET localhost:8090/api/v1/properties/search?start_date=2024-11-05&end_date=2024-11-15&page=0
+GET localhost:8090/api/v1/properties/search?property_type=FLAT&title=&desc=&city=Москва&start_date=2024-11-05&end_date=2024-11-15&price_from=&price_to=&rating=
 Content-Type: application/json
 
 
@@ -212,4 +212,8 @@ Content-Type: application/json
 
 ### Рейтинг арендатора
 PUT localhost:8090/api/v1/booking/1/renter/1
+Content-Type: application/json
+
+### Рейтинг арендатора
+GET localhost:8090/api/v1/users/get
 Content-Type: application/json

@@ -11,14 +11,14 @@ public class UserDto {
     String email;
     String firstname;
     String lastname;
-    String nick_name;
-    String birth_date;
+    String nickName;
+    String birthDate;
     String city;
     String country;
 
     public static UserDto from(User user){
         return new UserDto(user.getId(), user.getEmail(), user.getFirstName(), user.getLastName(), user.getNickName(),
-                user.getCity(), user.getBirthDate().toString(), user.getCounty());
+                 user.getBirthDate().toString(), user.getCity(), user.getCounty());
     }
 
     public static List<UserDto> from(List<User> userList){

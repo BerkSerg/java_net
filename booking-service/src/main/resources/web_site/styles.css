@@ -1,0 +1,281 @@
+html {
+	height: 100%;
+}
+
+#filter-content{
+    width: 20%;
+    height: fit-content;
+    min-height: calc(80vh);
+    border-radius: 20px;
+    background-color: white;
+}
+
+#filter-form{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#filter-form *{
+    height: 26px;
+}
+
+#filter-form button{
+    color: white;
+}
+
+#content{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    background-color: #f6f5f4;
+}
+
+#properties-list{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+	min-height: 100%;
+
+}
+
+header {
+    background-color: #ffffff;
+    color: green;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1{
+    cursor: pointer;
+}
+
+button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: darkgreen;
+    color: white;
+    border: none;
+    cursor: pointer;
+
+}
+
+button:hover {
+    background-color: darkolivegreen;
+}
+
+main {
+    padding: 20px;
+	min-height: calc(80vh);
+}
+
+footer {
+    text-align: center;
+	height: 30px;
+    padding: 10px;
+    background-color: white;
+}
+
+li{
+    list-style: none;
+}
+
+.prop-item{
+    background-color: white;
+    display: flex;
+    height: 150px;
+    width: 1200px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.prop-pics{
+    padding: 20px;
+
+    width: 20%;
+}
+
+.prop-desc{
+    padding: 20px;
+    width: 65%;
+    border-left: 1px solid cadetblue;
+}
+
+a{
+    text-decoration: none;
+}
+
+a, a:visited, a:hover, a:active {
+    color: inherit;
+}
+
+.prop-item:hover{
+    background-color: #dcfbf6;
+}
+
+.p-title{
+    font-size: 20pt;
+    font-weight: bold;
+}
+
+.p-city{
+    color: gray;
+    font-size: 14pt;
+}
+
+.prop-price{
+    font-weight: bold;
+    padding: 20px;
+    width: 15%;
+    border-left: 1px solid cadetblue;
+}
+
+#register-form, #login-form, #profile-form, #prop-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input[readonly]{
+    background-color: lightgrey;
+}
+
+#profile-form>span>label{
+    display: inline-block;
+    width: 120px;
+}
+#profile-form input, #profile-form select{
+    margin-left: 20px;
+}
+
+
+#btn-add-prop{
+    background-color:cadetblue;
+}
+
+.p-stars{
+    width: 90px;
+    background-color: darkgreen;
+    color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+.prop-pics{
+    padding:10px;
+}
+
+.prop-pics>img{
+    height: -webkit-fill-available;
+}
+
+._1y6saaeo{
+    position: absolute;
+    top: 120px;
+    left: 450px;
+    color: white
+}
+
+/* Стиль модального фона */
+.modal {
+    display: none; /* По умолчанию скрыто */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный фон */
+    justify-content: center; /* Горизонтальное центрирование */
+    align-items: center; /* Вертикальное центрирование */
+    z-index: 1000; /* Поверх всех элементов */
+}
+
+/* Содержимое модального окна */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+}
+
+/* Кнопка закрытия модального окна */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #aaa;
+    transition: color 0.3s;
+}
+
+.close:hover {
+    color: black;
+}
+
+.prop-m-title{
+    font-weight:bold;
+    font-size: 24pt;
+}
+
+.prop-m-desc, .prop-m-price{
+    margin: 30px 0;
+    text-align:left;
+}
+
+.prop-m-price{
+    font-weight: bold;
+    font-size: 18pt;
+}
+
+.prop-m-dates{
+    display: flex;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+button, input, select{
+    border-radius: 5px;
+}
+
+input, select{
+    border: 1px solid grey;
+    padding: 2px;
+}
+
+.cancel-btn{
+    background-color: darkred;
+    color: white;
+}
+
+.cancel-btn:hover{
+    background-color: brown;
+}
+
+.booking-item{
+    margin-top:20px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#modal-body img{
+    height: 100px;
+}
+
+.prop-img{
+    display: flex;
+    gap: 10px
+}

@@ -5,6 +5,7 @@ import org.example.demo.bookingservice.model.enums.PropertyStatus;
 import org.example.demo.bookingservice.model.enums.PropertyType;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -30,6 +31,8 @@ public class Property {
     private User owner;
 
     private String title;
+
+    @Column(length = 4000)
     private String description;
     private String city;
     private String country;
@@ -40,5 +43,8 @@ public class Property {
 
     @OneToMany(mappedBy="property")
     private List<Booking> bookings;
+
+    @OneToMany(mappedBy = "property", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<PropertyPhotos> propertyPhotosList;
 
 }
